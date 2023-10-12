@@ -6,11 +6,10 @@
             \renewcommand{\arraystretch}{0.80}
             \begin{tabular}{r rr rr r rr}
                 \toprule
-                合约     & 权重   & 优化权重  & 总市值   & 分配市值   & 收盘价 & 理论手数     & 实际手数     \\
+                合约     & 权重   & 优化权重  & 总市值   & 分配市值   & 收盘价 & 理论手数     & 实际手数      \\
                 \midrule
                 \csvreader[head to column names, late after line=\\]{\pathForDataDirTrade/orders_and_positions/\sigYear/\sigDate/positions_\sid_sig\sigDate_exe\exeDate.csv}{}
-                {\ticker & \value & \valueAdj & \premium & \allocated & \close & \quantityRaw & \quantityRnd
-                }
+                {\ticker & \value & \valueAdj & \premium & \allocated & \close & \quantityRaw & \quantityRnd}
                 \bottomrule
             \end{tabular}
             \caption{组合\sidAlias 当日持仓情况}

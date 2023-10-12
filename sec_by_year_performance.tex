@@ -1,23 +1,32 @@
 \section{逐年表现}
 
-\foreach \factor in {R1M010,R4M010,A1M020,A6M005,A3M020,A8M005}{
+\subsection{组合逐年绩效}
+\foreach \sid in {RF, RD, NF, ND}{
         \begin{table}[H]
             \centering
-            \small
-            \renewcommand{\arraystretch}{0.80}
-            \begin{tabular}{rr rr r rr r}
+            % \scriptsize
+            \renewcommand{\arraystretch}{0.7}
+            \begin{tabular}{r rrrr rr}
                 \toprule
-                年   & 天数  & 持有期收益  & 年化收益  & 夏普      & 最大回撤  & 最大回撤      & 卡玛       \\
-                     &       & (\%)        & (\%)      & 比率      & (\%)      & 时点          & 比率       \\
-
+                年          & 当年收益                   & 年化收益              & 年化波动                  & 最大回撤                   & 夏普比率             & 卡玛比率               \\
+                            & (\%)                       & (\%)                  & (\%)                      & (\%)                       &                      &                        \\
                 \midrule
-                \csvreader[head to column names, late after line=\\]{\pathForDataDirFactorsLib/by_year_allocation/summary.\factor.HPN001.by_year.latex.csv}{}
-                {\年 & \天数 & \持有期收益 & \年化收益 & \夏普比率 & \最大回撤 & \最大回撤时点 & \卡玛比率}
-
+                \csvreader[head to column names, late after line=\\]{\pathForDataDirFactorsLib/evaluations/portfolios/eval-portfolios-by-year-\sid.csv}{}
+                {\tradeYear & \csuse{hold_period_return} & \csuse{annual_return} & \csuse{annual_volatility} & \csuse{max_drawdown_scale} & \csuse{sharpe_ratio} & \csuse{calmar_ratio} }
                 \bottomrule
             \end{tabular}
-            \caption{组合\factor 逐年表现}
-            \label{tab_ret_risk_chars_by_year_\factor}
+            \caption{组合\sid 逐年绩效指标}
+            \label{tab_performance_by_year}
         \end{table}
+    }
 
+\subsection{组合逐年净值}
+
+\foreach \year in {2014,2015,2016,2017,2018,2019,2020,2021,2022}{
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.96\textwidth]{\pathForDataDirFactorsLib/evaluations/portfolios/portfolios_nav_\year.pdf}
+            \caption{组合\year 年净值}
+            \label{fig_nav_since_\year}
+        \end{figure}
     }

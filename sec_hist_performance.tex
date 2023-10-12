@@ -1,42 +1,24 @@
 \section{历史至今绩效}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.96\textwidth]{\pathForDataDirFactorsLib/evaluations/portfolios/portfolios_nav.pdf}
+    \caption{各组合历史以来表现}
+    \label{fig_nav_all_hist}
+\end{figure}
+
 \begin{table}[H]
     \centering
-    \renewcommand{\arraystretch}{0.65}
-    \begin{tabular}{r rr r rr r}
+    \renewcommand{\arraystretch}{1.0}
+    \begin{tabular}{r rrrr rr}
         \toprule
-        组合     & 持有期收益  & 年化收益  & 夏普      & 最大回撤  & 最大回撤      & 卡玛       \\
-        标志     & (\%)        & (\%)      & 比率      & (\%)      & 时点          & 比率       \\
-
+        组合        & 持有期收益                 & 年化收益              & 年化波动                  & 最大回撤                   & 夏普比率             & 卡玛比率               \\
+        标志        & (\%)                       & (\%)                  & (\%)                      & (\%)                       &                      &                        \\
         \midrule
-        \newcommand{\factor}{R1M010}
-        \csvreader[head to column names, late after line=\\]{\pathForDataDirFactorsLib/evaluations_opt/summary.\factor.aver.latex.csv}{}
-        {\factor & \持有期收益 & \年化收益 & \夏普比率 & \最大回撤 & \最大回撤时点 & \卡玛比率}
-
-        \newcommand{\factor}{R4M010}
-        \csvreader[head to column names, late after line=\\]{\pathForDataDirFactorsLib/evaluations_opt/summary.\factor.aver.latex.csv}{}
-        {\factor & \持有期收益 & \年化收益 & \夏普比率 & \最大回撤 & \最大回撤时点 & \卡玛比率}
-
-        \midrule
-        \newcommand{\factor}{A1M020}
-        \csvreader[head to column names, late after line=\\]{\pathForDataDirFactorsLib/evaluations_opt/summary.\factor.aver.latex.csv}{}
-        {\factor & \持有期收益 & \年化收益 & \夏普比率 & \最大回撤 & \最大回撤时点 & \卡玛比率}
-
-        \newcommand{\factor}{A6M005}
-        \csvreader[head to column names, late after line=\\]{\pathForDataDirFactorsLib/evaluations_opt/summary.\factor.aver.latex.csv}{}
-        {\factor & \持有期收益 & \年化收益 & \夏普比率 & \最大回撤 & \最大回撤时点 & \卡玛比率}
-
-        \midrule
-        \newcommand{\factor}{A3M020}
-        \csvreader[head to column names, late after line=\\]{\pathForDataDirFactorsLib/evaluations_opt/summary.\factor.aver.latex.csv}{}
-        {\factor & \持有期收益 & \年化收益 & \夏普比率 & \最大回撤 & \最大回撤时点 & \卡玛比率}
-
-        \newcommand{\factor}{A8M005}
-        \csvreader[head to column names, late after line=\\]{\pathForDataDirFactorsLib/evaluations_opt/summary.\factor.aver.latex.csv}{}
-        {\factor & \持有期收益 & \年化收益 & \夏普比率 & \最大回撤 & \最大回撤时点 & \卡玛比率}
-
+        \csvreader[head to column names, late after line=\\]{\pathForDataDirFactorsLib/evaluations/portfolios/eval-portfolios.csv}{}
+        {\portfolio & \csuse{hold_period_return} & \csuse{annual_return} & \csuse{annual_volatility} & \csuse{max_drawdown_scale} & \csuse{sharpe_ratio} & \csuse{calmar_ratio} }
         \bottomrule
     \end{tabular}
-    \caption{组合历史表现}
-    \label{tab_ret_risk_chars_hist}
+    \caption{各组合历史以来绩效指标}
+    \label{tab_pnl}
 \end{table}

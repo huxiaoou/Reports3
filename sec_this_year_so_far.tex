@@ -1,62 +1,33 @@
-\section{2023年以来的表现}
+\section{各组合2023年以来的表现}
 
-\subsection{各组合}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.96\textwidth]{\pathForDataDirFactorsLib/by_year_allocation/nav.comb.Y2023.pdf}
+    \includegraphics[width=0.96\textwidth]{\pathForDataDirFactorsLib/evaluations/portfolios/portfolios_nav_2023.pdf}
     \caption{各组合2023年以来表现}
     \label{fig_nav_since_2023}
 \end{figure}
 
-\subsection{行业因子}
-\begin{figure}[H]
+\begin{table}[H]
     \centering
-    \includegraphics[width=0.96\textwidth]{\pathForDataDirFactorsLib/by_year_allocation/nav.comb_sector_VM005.Y2023.pdf}
-    \caption{行业因子2023年以来表现, 5日平滑}
-    \label{fig_nav_sector_since_2023_VM005}
-\end{figure}
+    \renewcommand{\arraystretch}{1.0}
+    \begin{tabular}{r rrrr rr}
+        \toprule
+        组合 & 当年收益                   & 年化收益              & 年化波动                  & 最大回撤                   & 夏普比率             & 卡玛比率               \\
+        标志 & (\%)                       & (\%)                  & (\%)                      & (\%)                       &                      &                        \\
+        \midrule
+        \csvreader[head to column names, filter test = \ifnumequal{\thecsvinputline}{11}, late after line=\\]{\pathForDataDirFactorsLib/evaluations/portfolios/eval-portfolios-by-year-RF.csv}{}
+        {RF  & \csuse{hold_period_return} & \csuse{annual_return} & \csuse{annual_volatility} & \csuse{max_drawdown_scale} & \csuse{sharpe_ratio} & \csuse{calmar_ratio} }
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.96\textwidth]{\pathForDataDirFactorsLib/by_year_allocation/nav.comb_sector_VM020.Y2023.pdf}
-    \caption{行业因子2023年以来表现, 20日平滑}
-    \label{fig_nav_sector_since_2023_VM020}
-\end{figure}
+        \csvreader[head to column names, filter test = \ifnumequal{\thecsvinputline}{11}, late after line=\\]{\pathForDataDirFactorsLib/evaluations/portfolios/eval-portfolios-by-year-RD.csv}{}
+        {RD  & \csuse{hold_period_return} & \csuse{annual_return} & \csuse{annual_volatility} & \csuse{max_drawdown_scale} & \csuse{sharpe_ratio} & \csuse{calmar_ratio} }
 
-\subsection{一般因子}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.96\textwidth]{\pathForDataDirFactorsLib/by_year_allocation/nav.comb_style_VM005.Y2023.pdf}
-    \caption{一般因子2023年以来表现,5日平滑}
-    \label{fig_nav_style_since_2023_VM005}
-\end{figure}
+        \csvreader[head to column names, filter test = \ifnumequal{\thecsvinputline}{11}, late after line=\\]{\pathForDataDirFactorsLib/evaluations/portfolios/eval-portfolios-by-year-NF.csv}{}
+        {NF  & \csuse{hold_period_return} & \csuse{annual_return} & \csuse{annual_volatility} & \csuse{max_drawdown_scale} & \csuse{sharpe_ratio} & \csuse{calmar_ratio} }
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.96\textwidth]{\pathForDataDirFactorsLib/by_year_allocation/nav.comb_style_VM020.Y2023.pdf}
-    \caption{一般因子2023年以来表现,20日平滑}
-    \label{fig_nav_style_since_2023_VM020}
-\end{figure}
-
-% \section{历史至今表现}
-
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=0.96\textwidth]{\pathForDataDirFactorsLib/by_year_allocation/nav.comb.pdf}
-%     \caption{各组合历史至今表现}
-%     \label{fig_nav}
-% \end{figure}
-
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=0.96\textwidth]{\pathForDataDirFactorsLib/by_year_allocation/nav.comb_sector.pdf}
-%     \caption{行业因子历史至今表现}
-%     \label{fig_nav_sector}
-% \end{figure}
-
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=0.96\textwidth]{\pathForDataDirFactorsLib/by_year_allocation/nav.comb_style.pdf}
-%     \caption{一般因子历史至今表现}
-%     \label{fig_nav_style}
-% \end{figure}
+        \csvreader[head to column names, filter test = \ifnumequal{\thecsvinputline}{11}, late after line=\\]{\pathForDataDirFactorsLib/evaluations/portfolios/eval-portfolios-by-year-ND.csv}{}
+        {ND  & \csuse{hold_period_return} & \csuse{annual_return} & \csuse{annual_volatility} & \csuse{max_drawdown_scale} & \csuse{sharpe_ratio} & \csuse{calmar_ratio} }
+        \bottomrule
+    \end{tabular}
+    \caption{各组合2023年以来绩效指标}
+    \label{tab_performance_since_2023}
+\end{table}
