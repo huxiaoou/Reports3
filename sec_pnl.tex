@@ -1,0 +1,23 @@
+\section{当日盈亏情况}
+假设总开仓市值1000万元。
+
+\begin{itemize}
+    \item 理论收益指按照权重直接计算收益率，不考虑开仓手数问题。
+    \item 实际收益指按照假设的总开仓市值，将各合约按照权重转化为手数，并四舍五入取整，再进行计算收益。
+\end{itemize}
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.0}
+    \begin{tabular}{r rr rrr}
+        \toprule
+        组合  & 调仓       & 理论费前   & 理论费后   & 实际费前   & 实际费后     \\
+        标志  & 比例(\%)   & 收益率(\%) & 收益率(\%) & 收益率(\%) & 收益率(\%)   \\
+        \midrule
+        \csvreader[head to column names, late after line=\\]{\pathForDataDirTrade/orders_and_positions/\exeYear/\exeDate/sim_summary_\exeDate.csv}{}
+        {\sid & \dltWgtSum & \rawRetSum & \netRetSum & \rawPnlSum & \netPnlSum }
+        \bottomrule
+    \end{tabular}
+    \caption{各组合\displayDate 日盈亏情况}
+    \label{tab_pnl}
+\end{table}

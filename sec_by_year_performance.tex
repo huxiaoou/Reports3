@@ -1,0 +1,23 @@
+\section{逐年表现}
+
+\foreach \factor in {R1M010,R4M010,A1M020,A6M005,A3M020,A8M005}{
+        \begin{table}[H]
+            \centering
+            \small
+            \renewcommand{\arraystretch}{0.80}
+            \begin{tabular}{rr rr r rr r}
+                \toprule
+                年   & 天数  & 持有期收益  & 年化收益  & 夏普      & 最大回撤  & 最大回撤      & 卡玛       \\
+                     &       & (\%)        & (\%)      & 比率      & (\%)      & 时点          & 比率       \\
+
+                \midrule
+                \csvreader[head to column names, late after line=\\]{\pathForDataDirFactorsLib/by_year_allocation/summary.\factor.HPN001.by_year.latex.csv}{}
+                {\年 & \天数 & \持有期收益 & \年化收益 & \夏普比率 & \最大回撤 & \最大回撤时点 & \卡玛比率}
+
+                \bottomrule
+            \end{tabular}
+            \caption{组合\factor 逐年表现}
+            \label{tab_ret_risk_chars_by_year_\factor}
+        \end{table}
+
+    }

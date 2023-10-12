@@ -1,0 +1,51 @@
+\section{持仓情况}
+\foreach \sid/\sidAlias in {SND/ND,SNF/NF,SRD/RD,SRF/NF}{
+        \begin{table}[H]
+            \centering
+            \footnotesize
+            \renewcommand{\arraystretch}{0.80}
+            \begin{tabular}{r rr rr r rr}
+                \toprule
+                合约     & 权重   & 优化权重  & 总市值   & 分配市值   & 收盘价 & 理论手数     & 实际手数     \\
+                \midrule
+                \csvreader[head to column names, late after line=\\]{\pathForDataDirTrade/orders_and_positions/\sigYear/\sigDate/positions_\sid_sig\sigDate_exe\exeDate.csv}{}
+                {\ticker & \value & \valueAdj & \premium & \allocated & \close & \quantityRaw & \quantityRnd
+                }
+                \bottomrule
+            \end{tabular}
+            \caption{组合\sidAlias 当日持仓情况}
+            \label{tab_pos_\sid}
+        \end{table}
+    }
+
+\section{交易情况}
+\foreach \sid/\sidAlias in {SND/ND,SNF/NF,SRD/RD,SRF/NF}{
+        \begin{table}[H]
+            \centering
+            \scriptsize
+            \renewcommand{\arraystretch}{0.90}
+            \begin{tabular}{rr rrr rr rrr rr}
+                \toprule
+                合约     & 收益率
+                         & 昨权重                & 今权重                 & 权重变化
+                         & 收益率                & 净收益率
+                         & 昨日                  & 今日                   & 仓位
+                         & 收益                  & 净收益                            \\
+                         & (\%)
+                         & (\%)                  & (\%)                   & (\%)
+                         & (\%)                  & (\%)
+                         & 持仓                  & 持仓                   & 变化
+                         &                       &                                   \\
+                \midrule
+                \csvreader[head to column names, late after line=\\]{\pathForDataDirTrade/orders_and_positions/\exeYear/\exeDate/sim_\sid_\exeDate.csv}{}
+                {\ticker & \ret
+                         & \csuse{valueT2}       & \csuse{valueT1}        & \dltWgt
+                         & \rawRet               & \netRet
+                         & \csuse{quantityRndT2} & \csuse{quantityRndT1}  & \dltQty
+                         & \rawPnl               & \netPnl              }
+                \bottomrule
+            \end{tabular}
+            \caption{组合\sidAlias 当日交易情况}
+            \label{tab_trades_\sid}
+        \end{table}
+    }
