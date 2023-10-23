@@ -2,20 +2,22 @@
 假设总开仓市值1000万元。
 
 \begin{itemize}
-    \item 理论收益指按照权重直接计算收益率，不考虑开仓手数问题。
-    \item 实际收益指按照假设的总开仓市值，将各合约按照权重转化为手数，并四舍五入取整，再进行计算收益。
+    \item 按比例收益指按照合约市值权重比例直接计算收益率，不考虑开仓手数问题。
+    \item 按手数收益指按照给定的总开仓市值，将各合约按照合约市值权重比例转化为开仓手数，并四舍五入取整，再进行计算收益。
 \end{itemize}
+
+\input{paragraph_benchmark_ret.tex}
 
 \begin{table}[H]
     \centering
     \renewcommand{\arraystretch}{1.0}
     \begin{tabular}{r rr rrr}
         \toprule
-        组合  & 调仓       & 理论费前   & 理论费后   & 实际费前   & 实际费后     \\
-        标志  & 比例(\%)   & 收益率(\%) & 收益率(\%) & 收益率(\%) & 收益率(\%)   \\
+        组合  & 调仓比例   & 按比例,费前 & 按比例,费后 & 按手数,费前 & 按手数,费后  \\
+        标志  & (\%)       & 收益率(\%)  & 收益率(\%)  & 收益率(\%)  & 收益率(\%)   \\
         \midrule
         \csvreader[head to column names, late after line=\\]{\pathForDataDirTrade/orders_and_positions/\exeYear/\exeDate/sim_summary_\exeDate.csv}{}
-        {\sid & \dltWgtSum & \rawRetSum & \netRetSum & \rawPnlSum & \netPnlSum }
+        {\sid & \dltWgtSum & \rawRetSum  & \netRetSum  & \rawPnlSum  & \netPnlSum }
         \bottomrule
     \end{tabular}
     \caption{各组合\displayDate 日盈亏情况}
