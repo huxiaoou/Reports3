@@ -9,7 +9,8 @@
 
 \begin{table}[H]
     \centering
-    \renewcommand{\arraystretch}{1.0}
+    \small
+    \renewcommand{\arraystretch}{0.8}
     \begin{tabular}{r rrrr rr}
         \toprule
         组合        & 持有期收益                 & 年化收益              & 年化波动                  & 最大回撤                   & 夏普比率             & 卡玛比率               \\
@@ -20,5 +21,24 @@
         \bottomrule
     \end{tabular}
     \caption{各组合历史以来绩效指标}
-    \label{tab_pnl}
+    \label{tab_pnl_ever}
+\end{table}
+
+ 若按照开仓市值1000万元，以手数计算收益，则各组合表现如下:
+
+\begin{table}[H]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{0.8}
+    \begin{tabular}{r rrrr rr}
+        \toprule
+        组合        & 持有期收益                 & 年化收益              & 年化波动                  & 最大回撤                   & 夏普比率             & 卡玛比率               \\
+        标志        & (\%)                       & (\%)                  & (\%)                      & (\%)                       &                      &                        \\
+        \midrule
+        \csvreader[head to column names, late after line=\\]{\pathForDataDirFactorsLib/evaluations/complex/summary_for_complex_simulation.csv}{}
+        {\sid & \csuse{hold_period_return} & \csuse{annual_return} & \csuse{annual_volatility} & \csuse{max_drawdown_scale} & \csuse{sharpe_ratio} & \csuse{calmar_ratio} }
+        \bottomrule
+    \end{tabular}
+    \caption{各组合历史以来绩效指标,按手数计算。}
+    \label{tab_pnl_ever_complex}
 \end{table}
