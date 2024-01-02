@@ -1,10 +1,10 @@
-\section{各组合2023年以来的表现}
+\section{各组合2024年以来的表现}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.96\textwidth]{\pathForDataDirFactorsLib/evaluations/portfolios/portfolios_nav_2023.pdf}
-    \caption{各组合2023年以来表现}
-    \label{fig_nav_since_2023}
+    \includegraphics[width=0.96\textwidth]{\pathForDataDirFactorsLib/evaluations/portfolios/portfolios_nav_2024.pdf}
+    \caption{各组合2024年以来表现}
+    \label{fig_nav_since_2024}
 \end{figure}
 
 \begin{table}[H]
@@ -15,19 +15,19 @@
         组合 & 当年收益                   & 年化收益              & 年化波动                  & 最大回撤                   & 夏普比率             & 卡玛比率               \\
         标志 & (\%)                       & (\%)                  & (\%)                      & (\%)                       &                      &                        \\
         \midrule
-        \csvreader[head to column names, filter test = \ifnumequal{\thecsvinputline}{11}, late after line=\\]{\pathForDataDirFactorsLib/evaluations/portfolios/eval-portfolios-by-year-RF.csv}{}
+        \csvreader[head to column names, filter test = \ifnumequal{\thecsvinputline}{12}, late after line=\\]{\pathForDataDirFactorsLib/evaluations/portfolios/eval-portfolios-by-year-RF.csv}{}
         {RF  & \csuse{hold_period_return} & \csuse{annual_return} & \csuse{annual_volatility} & \csuse{max_drawdown_scale} & \csuse{sharpe_ratio} & \csuse{calmar_ratio} }
 
-        \csvreader[head to column names, filter test = \ifnumequal{\thecsvinputline}{11}, late after line=\\]{\pathForDataDirFactorsLib/evaluations/portfolios/eval-portfolios-by-year-RD.csv}{}
+        \csvreader[head to column names, filter test = \ifnumequal{\thecsvinputline}{12}, late after line=\\]{\pathForDataDirFactorsLib/evaluations/portfolios/eval-portfolios-by-year-RD.csv}{}
         {RD  & \csuse{hold_period_return} & \csuse{annual_return} & \csuse{annual_volatility} & \csuse{max_drawdown_scale} & \csuse{sharpe_ratio} & \csuse{calmar_ratio} }
 
-        \csvreader[head to column names, filter test = \ifnumequal{\thecsvinputline}{11}, late after line=\\]{\pathForDataDirFactorsLib/evaluations/portfolios/eval-portfolios-by-year-NF.csv}{}
+        \csvreader[head to column names, filter test = \ifnumequal{\thecsvinputline}{12}, late after line=\\]{\pathForDataDirFactorsLib/evaluations/portfolios/eval-portfolios-by-year-NF.csv}{}
         {NF  & \csuse{hold_period_return} & \csuse{annual_return} & \csuse{annual_volatility} & \csuse{max_drawdown_scale} & \csuse{sharpe_ratio} & \csuse{calmar_ratio} }
 
-        \csvreader[head to column names, filter test = \ifnumequal{\thecsvinputline}{11}, late after line=\\]{\pathForDataDirFactorsLib/evaluations/portfolios/eval-portfolios-by-year-ND.csv}{}
+        \csvreader[head to column names, filter test = \ifnumequal{\thecsvinputline}{12}, late after line=\\]{\pathForDataDirFactorsLib/evaluations/portfolios/eval-portfolios-by-year-ND.csv}{}
         {ND  & \csuse{hold_period_return} & \csuse{annual_return} & \csuse{annual_volatility} & \csuse{max_drawdown_scale} & \csuse{sharpe_ratio} & \csuse{calmar_ratio} }
         \bottomrule
     \end{tabular}
-    \caption{各组合2023年以来绩效指标}
+    \caption{各组合2024年以来绩效指标}
     \label{tab_performance_since_2023}
 \end{table}
